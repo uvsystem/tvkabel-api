@@ -1,3 +1,3 @@
 <?php
-$target = "http://uvision.whelastic.net/api";
+$target = "http://uvision.whelastic.net/tvkabel/api";
 ?>
