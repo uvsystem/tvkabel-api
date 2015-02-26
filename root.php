@@ -16,7 +16,7 @@ class Rest {
     $this->_data = $data;
     $this->_method = $method;
     
-    $this->session = curl_init();
+    $this->_session = curl_init();
   }
   
   public function execute() {
