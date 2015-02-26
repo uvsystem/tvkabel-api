@@ -9,8 +9,6 @@ $data = array(
 );
 $json = json_encode($data);
 
-echo $url . "<br />" . $json;
-
 $response = execute($url, $json, "GET");
 
 echo $response;
