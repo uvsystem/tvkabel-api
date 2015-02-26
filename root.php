@@ -39,7 +39,7 @@ class Rest {
   
   private function setCurlMethod($method) {
     if (($method == "DELETE") || ($method == "delete")) {
-      curl_setopt($this->session, CURLOPT_CUSTOMREQUEST, $method);
+      curl_setopt($this->_session, CURLOPT_CUSTOMREQUEST, $method);
     } else if (($method == "GET") || ($method == "get")) {
       curl_setopt($this->_session, CURLOPT_HTTPGET, true);
     } else if (($method == "POST") || ($method == "post")) {
