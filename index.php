@@ -9,7 +9,8 @@ $data = array(
 );
 $json = json_encode($data);
 
-$response = execute($url, $json, "get");
+$rest = new Rest($url, $json, "GET");
+$response = $rest->execute();
 
 echo $response;
 ?>
