@@ -1,6 +1,11 @@
 <?php
 include("../root.php");
-$json = "{'id':'id', 'latitude':'lat', 'longitude':'lng'}";
+$data = array(
+  id => 'id',
+  latitude => 'lat',
+  longitude => 'lng'
+);
+$json = json_encode($data);;
 /*
 $requestBody = file_get_contents("php://input");
 $url = $target . "/pelanggan/id" . $id . "/location/" . $latitude . "/" . $longitude;
@@ -27,6 +32,7 @@ $result = curl_exec($session);
 //close connection
 curl_close($session);
 */
-
+print_r($data);
+echo $json;
 echo json_decode($json);
 ?>
