@@ -1,7 +1,8 @@
 <?php
+include(root.php);
 //extract json data from request payload
 $requestBody = file_get_contents('php://input');
-$url = "http://uvision.whelastic.net/tvkabel/api/login";
+$url = $target . "/login";
 $httpHeader = array (
   "Accept: application/json",
   "Accept-Encoding: gzip, deflate",
