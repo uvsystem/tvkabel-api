@@ -15,8 +15,8 @@ class Rest {
     $this->_url = $url;
     $this->_data = $data;
     $this->_method = $method;
-    
-    this->prepare();
+
+    $this->prepare();
   }
   
   public function execute() {
@@ -29,6 +29,7 @@ class Rest {
   
   private function prepare() {
     $this->_session = curl_init();
+    
     $this->setUrl($this->_url, $this->_data, $this->_method);  
     $this->setCurlMethod($this->_method);
     
