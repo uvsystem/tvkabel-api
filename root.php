@@ -9,10 +9,18 @@ function execute($url, $data, $method) {
   );
 
   //open curl connection
-  $session = curl_init($url);
+  $session = curl_init();
   
   curl_setopt($session, CURLOPT_RETURNTRANSFER, true);
   curl_setopt($session, CURLOPT_HTTPHEADER, $httpHeader);
+  
+  curl_setopt($session, CURLOPT_URL, $url);
+  if (($method == "GET") | ($method == "get")) {
+    $url .= "?" . $data;
+    curl_setopt($session, CURLOPT_URL, $url);
+  }
+
+  echo "debug: " . $url;
   
   //set http method
   if (($method == "DELETE") || ($method == "delete")) {
