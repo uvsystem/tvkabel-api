@@ -1,7 +1,7 @@
 <?php
 include("../root.php");
 
-$requestBody = file_get_contents("php://file");
+$requestBody = file_get_contents("php://input");
 
 echo "debug : " . $requestBody;
 
