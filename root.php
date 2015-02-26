@@ -15,12 +15,10 @@ function execute($url, $data, $method) {
   curl_setopt($session, CURLOPT_HTTPHEADER, $httpHeader);
   
   curl_setopt($session, CURLOPT_URL, $url);
-  if (($method == "GET") | ($method == "get")) {
+  if ((($method == "GET") || ($method == "get")) && (($data != null) && ($data != ""))) {
     $url .= "?" . $data;
     curl_setopt($session, CURLOPT_URL, $url);
   }
-
-  echo "debug: " . $url . "<br />";
   
   //set http method
   if (($method == "DELETE") || ($method == "delete")) {
@@ -34,7 +32,6 @@ function execute($url, $data, $method) {
   }
   //set request body with json if $data is not null
   if ($data != null) {
-    echo "debug: " . $data . "<br />";
     curl_setopt($session, CURLOPT_POSTFIELDS, $data);
   }
 
