@@ -18,4 +18,15 @@ $url = "http://uvs-t001.whelastic.net/api/pelanggan/kode.php";
 $rest->set($url, $json, "GET");
 $response = $rest->execute();
 echo $response;
+
+$arr = array(
+  username => "melky",
+  password => "melky"
+);
+$arrJson = json_encode($arr);
+
+$url = "http://uvs-t001.whelastic.net/api/login.php";
+$rest->set($url, $arrJson, "POST");
+$response = $rest->execute();
+echo $response;
 ?>
