@@ -1,10 +1,11 @@
 <?php
 include("../root.php");
-
+$json = "{'id':'id', 'latitude':'lat', 'longitude':'lng'}";
+/*
 $requestBody = file_get_contents("php://input");
 $url = $target . "/pelanggan/id" . $id . "/location/" . $latitude . "/" . $longitude;
 
-/*
+
 $httpHeader = array (
   "Accept: application/json",
   "Accept-Encoding: gzip, deflate",
@@ -27,5 +28,5 @@ $result = curl_exec($session);
 curl_close($session);
 */
 
-echo json_decode($requestBody);
+echo json_decode($json);
 ?>
