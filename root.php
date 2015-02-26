@@ -25,8 +25,10 @@ function execute($url, $data, $method) {
     curl_setopt($session, CURLOPT_PUT, true);
   }
   //set request body with json if $data is not null
-  if ($data)
+  if ($data != null) {
+    echo "debug: " . $data . "<br />";
     curl_setopt($session, CURLOPT_POSTFIELDS, $data);
+  }
 
   $result = curl_exec($session);
 
