@@ -2,8 +2,10 @@
 include("../root.php");
 
 $id = $_REQUEST['id'];
-$request = $target . "/pelanggan/id/" . $id; 
-$response = execute($request, null, "get"); 
+$url = $target . "/pelanggan/id/" . $id;
+
+$rest = new Rest($url, null, "GET");
+$response = $rest->execute(); 
 
 echo $response; 
 ?>
