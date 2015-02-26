@@ -14,10 +14,16 @@ function execute($url, $data, $method) {
   curl_setopt($session, CURLOPT_RETURNTRANSFER, true);
   curl_setopt($session, CURLOPT_HTTPHEADER, $httpHeader);
   
-  //set request method, default is GET
-  if ($method != "GET" && $method != "get")
+  //set http method
+  if (($method == "DELETE") || ($method == "delete")) {
     curl_setopt($session, CURLOPT_CUSTOMREQUEST, $method);
-  
+  } else if (($method == "GET") || ($method == "get")) {
+    curl_setopt($session, CURLOPT_HTTPGET, true);
+  } else if (($method == "POST") || ($method == "post")) {
+    curl_setopt($session, CURLOPT_POST, true);
+  } else if (($method == "PUT") || ($method == "put")) {
+    curl_setopt($session, CURLOPT_PUT, true);
+  }
   //set request body with json if $data is not null
   if ($data)
     curl_setopt($session, CURLOPT_POSTFIELDS, $data);
