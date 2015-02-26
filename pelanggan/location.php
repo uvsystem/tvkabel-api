@@ -6,7 +6,8 @@ $requestBody = file_get_contents("php://input");
 $obj = json_decode($requestBody);
 $url = $target . "/pelanggan/id" . $obj->id . "/location/" . $obj->latitude . "/" . $obj->longitude;
 
-$response = execute($url, null, "put");
+$rest = new Rest($url, null, "PUT");
+$response = $rest->execute();
 
 echo $response;
 ?>
