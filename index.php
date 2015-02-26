@@ -11,6 +11,9 @@ $json = json_encode($data);
 
 $rest = new Rest($url, $json, "GET");
 $response = $rest->execute();
+echo $response;
 
+$rest->set("http://www.google.com", null, "GET");
+$response = $rest->execute();
 echo $response;
 ?>
