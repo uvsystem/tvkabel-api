@@ -11,13 +11,13 @@ $url = "http://uvs-t001.whelastic.net/api/tagihan/kode.php";
 $rest = new Rest($url, $json, "GET");
 $response = $rest->execute();
 echo $response;
-
 echo "<br /><br />";
 
 $url = "http://uvs-t001.whelastic.net/api/pelanggan/kode.php";
 $rest->set($url, $json, "GET");
 $response = $rest->execute();
 echo $response;
+echo "<br /><br />";
 
 $arr = array(
   username => "melky",
