@@ -1,9 +1,9 @@
 <?php
 include("../root.php");
-$id = $_REQUEST['id'];
 
+$id = $_REQUEST['id'];
 $request = $target . "/pelanggan/id/" . $id; 
-$response = file_get_contents($request); 
+$response = execute($request, null, "get"); 
 
 echo $response; 
 ?>
