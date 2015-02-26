@@ -16,25 +16,29 @@ class Rest {
     $this->_data = $data;
     $this->_method = $method;
     
-    $this->_session = curl_init();
+    this->prepare();
   }
   
   public function execute() {
-    curl_setopt($this->_session, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($this->_session, CURLOPT_HTTPHEADER, $this->_httpHeader);
-    $this->setUrl($this->_url, $this->_data, $this->_method);  
-    $this->setCurlMethod($this->_method);
-  
-    //set request body with json if $data is not null
-    if ($this->_data != null) {
-      curl_setopt($this->_session, CURLOPT_POSTFIELDS, $this->_data);
-    }
-
     $response = curl_exec($this->_session);
     
     curl_close($this->_session);
 
     return $response;
+  }
+  
+  private function prepare() {
+    $this->_session = curl_init();
+    $this->setUrl($this->_url, $this->_data, $this->_method);  
+    $this->setCurlMethod($this->_method);
+    
+    curl_setopt($this->_session, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($this->_session, CURLOPT_HTTPHEADER, $this->_httpHeader);
+  
+    //set request body with json if $data is not null
+    if ($this->_data != null) {
+      curl_setopt($this->_session, CURLOPT_POSTFIELDS, $this->_data);
+    }
   }
   
   private function setCurlMethod($method) {
