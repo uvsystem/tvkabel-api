@@ -1,15 +1,10 @@
 <?php
 include("../root.php");
-$data = array(
-  id => 'id',
-  latitude => 'lat',
-  longitude => 'lng'
-);
-$json = json_encode($data);;
-/*
-$requestBody = file_get_contents("php://input");
-$url = $target . "/pelanggan/id" . $id . "/location/" . $latitude . "/" . $longitude;
 
+$requestBody = file_get_contents("php://input");
+//decode json into stdObject
+$obj = json_decode($requestBody);
+$url = $target . "/pelanggan/id" . $obj->id . "/location/" . $obj->latitude . "/" . $obj->longitude;
 
 $httpHeader = array (
   "Accept: application/json",
@@ -22,18 +17,13 @@ $session = curl_init($url);
 curl_setopt($session, CURLOPT_RETURNTRANSFER, 1);
 //set request method as post
 curl_setopt($session, CURLOPT_POST, 1);
-//set request body with json
-curl_setopt($session, CURLOPT_POSTFIELDS, $requestBody);
 //set request header to support json
 curl_setopt($session, CURLOPT_HTTPHEADER, $httpHeader);
 
-$result = curl_exec($session);
+$response = curl_exec($session);
 
 //close connection
 curl_close($session);
-*/
-$decoded = json_decode($json);
-print_r($data);
-echo $json;
-print_r($decoded);
+
+echo $response;
 ?>
