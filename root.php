@@ -1,3 +1,29 @@
 <?php
 $target = "http://uvision.whelastic.net/tvkabel/api";
+
+function post($url, $data, $method) {
+  $httpHeader = array (
+    "Accept: application/json",
+    "Accept-Encoding: gzip, deflate",
+    "Content-Type: application/json",
+  );
+
+  //open curl connection
+  $session = curl_init($url);
+  
+  curl_setopt($session, CURLOPT_RETURNTRANSFER, true);
+  curl_setopt($session, CURLOPT_CUSTOMREQUEST, $method);
+  curl_setopt($session, CURLOPT_HTTPHEADER, $httpHeader);
+  
+  //set request body with json if $data is not null
+  if ($data)
+    curl_setopt($session, CURLOPT_POSTFIELDS, $data);
+
+  $result = curl_exec($session);
+
+  //close connection
+  curl_close($session);
+
+  return $result;
+}
 ?>
