@@ -12,7 +12,7 @@ class Rest {
   );
 
   function __construct($url, $data, $method) {
-    set($url, $data, $method);
+    $this->set($url, $data, $method);
   }
   
   public function execute() {
