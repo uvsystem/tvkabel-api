@@ -20,7 +20,7 @@ function execute($url, $data, $method) {
     curl_setopt($session, CURLOPT_URL, $url);
   }
 
-  echo "debug: " . $url;
+  echo "debug: " . $url . "<br />";
   
   //set http method
   if (($method == "DELETE") || ($method == "delete")) {
