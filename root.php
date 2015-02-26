@@ -12,11 +12,7 @@ class Rest {
   );
 
   function __construct($url, $data, $method) {
-    $this->_url = $url;
-    $this->_data = $data;
-    $this->_method = $method;
-
-    $this->prepare();
+    set($url, $data, $method);
   }
   
   public function execute() {
@@ -25,6 +21,14 @@ class Rest {
     curl_close($this->_session);
 
     return $response;
+  }
+  
+  public function set($url, $data, $method) {
+    $this->_url = $url;
+    $this->_data = $data;
+    $this->_method = $method;
+
+    $this->prepare();
   }
   
   private function prepare() {
