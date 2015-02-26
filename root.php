@@ -12,8 +12,11 @@ function execute($url, $data, $method) {
   $session = curl_init($url);
   
   curl_setopt($session, CURLOPT_RETURNTRANSFER, true);
-  curl_setopt($session, CURLOPT_CUSTOMREQUEST, $method);
   curl_setopt($session, CURLOPT_HTTPHEADER, $httpHeader);
+  
+  //set request method, default is GET
+  if ($method != "GET" && $method != "get")
+    curl_setopt($session, CURLOPT_CUSTOMREQUEST, $method);
   
   //set request body with json if $data is not null
   if ($data)
