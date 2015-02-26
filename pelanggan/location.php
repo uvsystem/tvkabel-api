@@ -32,7 +32,8 @@ $result = curl_exec($session);
 //close connection
 curl_close($session);
 */
+$decoded = json_decode($json);
 print_r($data);
 echo $json;
-echo json_decode($json);
+print_r($decoded);
 ?>
