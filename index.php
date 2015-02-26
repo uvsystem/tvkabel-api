@@ -9,7 +9,7 @@ $data = array(
 );
 $json = json_encode($data);
 
-$response = execute($url, $json, "GET");
+$response = execute($url, $json, "POST");
 
 echo $response;
 ?>
