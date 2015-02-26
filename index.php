@@ -18,4 +18,8 @@ $url = "http://uvs-t001.whelastic.net/api/pelanggan/kode.php";
 $rest->set($url, $json, "GET");
 $response = $rest->execute();
 echo $response;
+
+$rest->set("http://www.google.com", null, "GET");
+$response = $rest->execute();
+echo $response;
 ?>
