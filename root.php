@@ -5,7 +5,8 @@ class Rest {
   private $_url;
   private $_data;
   private $_method;
-  private $httpHeader = array (
+  private $_session;
+  private $_httpHeader = array (
     "Accept: application/json",
     "Content-Type: application/json",
   );
@@ -14,46 +15,45 @@ class Rest {
     $this->_url = $url;
     $this->_data = $data;
     $this->_method = $method;
+    
+    $this->session = curl_init();
   }
   
   public function execute() {
-    //open curl connection
-    $session = curl_init();
-    
-    curl_setopt($session, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($session, CURLOPT_HTTPHEADER, $this->httpHeader);
-    $this->setUrl($session, $this->url, $this->data, $this->method);  
-    $this->setCurlMethod($session, $this->method);
+    curl_setopt($this->_session, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($this->_session, CURLOPT_HTTPHEADER, $this->_httpHeader);
+    $this->setUrl($this->_url, $this->_data, $this->_method);  
+    $this->setCurlMethod($this->_method);
   
     //set request body with json if $data is not null
-    if ($this->data != null) {
-      curl_setopt($session, CURLOPT_POSTFIELDS, $this->data);
+    if ($this->_data != null) {
+      curl_setopt($this->_session, CURLOPT_POSTFIELDS, $this->_data);
     }
 
-    $response = curl_exec($session);
+    $response = curl_exec($this->_session);
     
-    curl_close($session);
+    curl_close($this->_session);
 
     return $response;
   }
   
-  private function setCurlMethod($session, $method) {
+  private function setCurlMethod($method) {
     if (($method == "DELETE") || ($method == "delete")) {
-      curl_setopt($session, CURLOPT_CUSTOMREQUEST, $method);
+      curl_setopt($this->session, CURLOPT_CUSTOMREQUEST, $method);
     } else if (($method == "GET") || ($method == "get")) {
-      curl_setopt($session, CURLOPT_HTTPGET, true);
+      curl_setopt($this->_session, CURLOPT_HTTPGET, true);
     } else if (($method == "POST") || ($method == "post")) {
-     curl_setopt($session, CURLOPT_POST, true);
+     curl_setopt($this->_session, CURLOPT_POST, true);
     } else if (($method == "PUT") || ($method == "put")) {
-      curl_setopt($session, CURLOPT_PUT, true);
+      curl_setopt($this->_session, CURLOPT_PUT, true);
     }
   }
 
-  private function setUrl($session, $url, $data, $method) {
-    curl_setopt($session, CURLOPT_URL, $url);
+  private function setUrl($url, $data, $method) {
+    curl_setopt($this->_session, CURLOPT_URL, $url);
     if ((($method == "GET") || ($method == "get")) && (($data != null) && ($data != ""))) {
       $url .= "?" . $data;
-      curl_setopt($session, CURLOPT_URL, $url);
+      curl_setopt($this->_session, CURLOPT_URL, $url);
     }
   }
 }
