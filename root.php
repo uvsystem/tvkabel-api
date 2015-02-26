@@ -4,7 +4,6 @@ $target = "http://uvision.whelastic.net/tvkabel/api";
 function execute($url, $data, $method) {
   $httpHeader = array (
     "Accept: application/json",
-    "Accept-Encoding: gzip, deflate",
     "Content-Type: application/json",
   );
 
