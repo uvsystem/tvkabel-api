@@ -6,6 +6,7 @@ $data = array(
   kode => "ws01001"
 );
 $json = json_encode($data);
+$json = "{\"idPerusahaan\":17, \"kode\":\"ws01001\"}";
 
 $url = "http://uvs-t001.whelastic.net/api/tagihan/kode.php";
 $rest = new Rest($url, $json, "GET");
