@@ -2,7 +2,10 @@
 include("../root.php");
 
 $requestBody = file_get_contents("php://input");
-echo "debug: " . $requestBody;
+
+echo "debug: " . $requestBody . "<br /><br />";
+print_r($_GET);
+
 $obj = json_decode($requestBody);
 $url = $target . "/pelanggan/perusahaan/" . $obj->idPerusahaan . "/kode/" . $obj->kode;
 
