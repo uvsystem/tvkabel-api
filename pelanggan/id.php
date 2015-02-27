@@ -1,8 +1,9 @@
 <?php
 include("../root.php");
 
-$id = $_REQUEST['id'];
-$url = $target . "/pelanggan/id/" . $id;
+$requestBody = file_get_contents("php://input");
+$obj = json_decode($requestBody);
+$url = $target . "/pelanggan/id/" . $obj->id;
 
 $rest = new Rest($url, null, "GET");
 $response = $rest->execute(); 
