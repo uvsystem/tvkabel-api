@@ -2,7 +2,7 @@
 include("root.php");
 
 $data = array(
-  idPerusahaan => "17",
+  idPerusahaan => 17,
   kode => "ws01001"
 );
 $json = json_encode($data);
