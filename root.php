@@ -1,5 +1,5 @@
 <?php
-$target = "http://uvision.whelastic.net/tvkabel/api";
+$target = "http://core-unitedvision.whelastic.net/tvkabel/api";
 
 class Rest {
   private $_url;
